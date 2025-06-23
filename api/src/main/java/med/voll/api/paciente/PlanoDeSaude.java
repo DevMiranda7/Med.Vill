@@ -5,6 +5,6 @@ public enum PlanoDeSaude {
     BASICO,
     EMPRESARIAL,
     TOP,
-    EXECUTIVO
+    EXECUTIVO;
 
 }
