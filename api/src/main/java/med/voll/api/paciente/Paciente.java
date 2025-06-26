@@ -10,8 +10,7 @@ import med.voll.api.endereco.Endereco;
 
 @Entity(name ="paciente")
 @Table(name = "pacientes")
-@Getter
-@NoArgsConstructor
+
 @AllArgsConstructor
 
 @EqualsAndHashCode(of = "id")
@@ -37,6 +36,9 @@ public class Paciente {
 
     private String sintomas;
 
+public Paciente(){}
+
+
     public Paciente(DadosCadastroPaciente dados){
         this.nome = dados.nome();
         this.idade = dados.idade();
@@ -48,5 +50,67 @@ public class Paciente {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public String getAltura() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura = altura;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public PlanoDeSaude getPlanoDeSaude() {
+        return planoDeSaude;
+    }
+
+    public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
+        this.planoDeSaude = planoDeSaude;
+    }
+
+    public String getSintomas() {
+        return sintomas;
+    }
+
+    public void setSintomas(String sintomas) {
+        this.sintomas = sintomas;
+    }
 }
