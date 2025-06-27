@@ -28,6 +28,8 @@ public class Paciente {
 
     private String peso;
 
+    private Boolean ativo;
+
     @Embedded
     private Endereco endereco;
 
@@ -40,6 +42,7 @@ public Paciente(){}
 
 
     public Paciente(DadosCadastroPaciente dados){
+        this.ativo = true;
         this.nome = dados.nome();
         this.idade = dados.idade();
         this.altura = dados.altura();
@@ -50,12 +53,46 @@ public Paciente(){}
 
     }
 
+    public void atualizarPaciente(DadosAtualizarPaciente paciente){
+      if(paciente.nome() != null){
+          this.nome = paciente.nome();
+      }
+      if(paciente.altura() != null){
+            this.altura = paciente.altura();
+      }
+      if(paciente.idade() != null){
+            this.idade = paciente.idade();
+      }
+      if(paciente.peso() != null){
+            this.peso = paciente.peso();
+      }
+      if(paciente.planoDeSaude() != null){
+            this.planoDeSaude = paciente.planoDeSaude();
+      }
+      if (paciente.endereco() != null){
+          this.endereco.atualizarInformacoes(paciente.endereco());
+      }
+
+    }
+
+    public void excluirPaciente(){
+        this.ativo = false;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setAtivo(boolean ativo){
+        this.ativo = ativo;
+    }
+
+    public boolean getAtivo(){
+        return ativo;
     }
 
     public String getNome() {
@@ -113,4 +150,6 @@ public Paciente(){}
     public void setSintomas(String sintomas) {
         this.sintomas = sintomas;
     }
+
+
 }

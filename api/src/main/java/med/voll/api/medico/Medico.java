@@ -27,17 +27,40 @@ public class Medico  {
     @Embedded
     private Endereco endereco;
 
+    private boolean ativo;
+
     public Medico(){
 
     }
 
     public Medico(DadosCadastroMedico dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.crm = dados.crm();
         this.endereco = new Endereco(dados.endereco());
         this.especialidade = dados.especialidade();
+
+    }
+
+    public void atualizarInformacoes(DadosAtualizarMedico dados) {
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.email() != null){
+            this.email = dados.email();
+        }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco() != null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 
     public Long getId() {
@@ -96,18 +119,14 @@ public class Medico  {
         this.endereco = endereco;
     }
 
-    public void atualizarInformacoes(DadosAtualizarMedico dados) {
-        if(dados.nome() != null){
-            this.nome = dados.nome();
-        }
-        if (dados.email() != null){
-            this.email = dados.email();
-        }
-        if (dados.telefone() != null){
-            this.telefone = dados.telefone();
-        }
-        if (dados.endereco() != null){
-            this.endereco.atualizarInformacoes(dados.endereco());
-        }
+    public void setAtivo(Boolean ativo){
+        this.ativo = ativo;
     }
+
+    public Boolean getAtivo(){
+        return ativo;
+    }
+
+
+
 }
